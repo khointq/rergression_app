@@ -385,9 +385,8 @@ def localize_display_columns(df_input):
 @st.cache_data(show_spinner=False)
 def load_anomaly_source_data():
     candidate_paths = [
-        BASE_DIR / "data" / "processed" / "outlier_samples_6cols.csv",
-        BASE_DIR / "data" / "processed" / "non_outlier_samples_6cols.csv",
-        BASE_DIR / "notebooks" / "outlier_samples_6cols.csv",
+        BASE_DIR /"outlier_samples_6cols.csv",
+        BASE_DIR / "non_outlier_samples_6cols.csv",
     ]
 
     data_path = None
@@ -720,19 +719,16 @@ def render_intro_tab():
 
 
 def render_author_tab():
-    st.title("Thông tin tác giả")
+    st.title("Thông tin học viên")
     st.subheader("Dự án dự đoán giá nhà")
-    st.write("Bạn có thể cập nhật thông tin tác giả bên dưới theo nhu cầu.")
 
     c1, c2 = st.columns(2)
     with c1:
-        st.text_input("Họ và tên", value="Nguyen Van A", disabled=True)
-        st.text_input("Email", value="nguyenvana@example.com", disabled=True)
+        st.text_input("Họ và tên", value="Nguyễn Trần Quốc Khôi", disabled=True)
+        st.text_input("Email", value="khointq0209@gmail.com", disabled=True)
     with c2:
-        st.text_input("Đơn vị", value="Seminar TTTH", disabled=True)
-        st.text_input("Niên khóa", value="2025 - 2026", disabled=True)
-
-    st.info("Nếu bạn muốn, mình có thể sửa thông tin tác giả đúng theo thông tin thật của bạn.")
+        st.text_input("Họ và tên", value="Nguyễn Trường", disabled=True)
+        st.text_input("Email", value="nguyentruong@gmail.com", disabled=True)
 
 
 def render_anomaly_tab():
@@ -978,13 +974,13 @@ def main():
         st.header("Menu")
         selected_tab = st.radio(
             "Chọn tab",
-            ["Giới thiệu ứng dụng", "Thông tin tác giả", "Dự đoán giá nhà", "Phát hiện bất thường"],
+            ["Giới thiệu ứng dụng", "Thông tin học viên", "Dự đoán giá nhà", "Phát hiện bất thường"],
             index=2,
         )
 
     if selected_tab == "Giới thiệu ứng dụng":
         render_intro_tab()
-    elif selected_tab == "Thông tin tác giả":
+    elif selected_tab == "Thông tin học viên":
         render_author_tab()
     elif selected_tab == "Phát hiện bất thường":
         render_anomaly_tab()
